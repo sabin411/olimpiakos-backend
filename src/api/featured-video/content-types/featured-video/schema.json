@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "featured_videos",
+  "info": {
+    "singularName": "featured-video",
+    "pluralName": "featured-videos",
+    "displayName": "FeaturedVideo"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "videos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::video.video",
+      "mappedBy": "featured_video"
+    }
+  }
+}

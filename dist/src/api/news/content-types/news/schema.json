@@ -1,0 +1,26 @@
+{
+    "kind": "collectionType",
+    "collectionName": "all_news",
+    "info": {
+        "singularName": "news",
+        "pluralName": "all-news",
+        "displayName": "News"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "title": {
+            "type": "string",
+            "required": true
+        },
+        "imageUrl": {
+            "type": "string",
+            "required": true
+        },
+        "description": {
+            "type": "richtext"
+        }
+    }
+}
