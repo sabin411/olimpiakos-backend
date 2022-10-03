@@ -12,10 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "imageUrl": {
-      "type": "text",
-      "required": true
-    },
     "text": {
       "type": "string"
     },
@@ -27,6 +23,14 @@
     },
     "Date": {
       "type": "datetime",
+      "required": true
+    },
+    "imageUrl": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
       "required": true
     }
   }
