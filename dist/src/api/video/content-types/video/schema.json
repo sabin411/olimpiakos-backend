@@ -1,0 +1,86 @@
+{
+    "kind": "collectionType",
+    "collectionName": "videos",
+    "info": {
+        "singularName": "video",
+        "pluralName": "videos",
+        "displayName": "Video",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "embedId": {
+            "type": "string",
+            "required": true,
+            "unique": true
+        },
+        "title": {
+            "type": "string",
+            "required": true
+        },
+        "thumbnail": {
+            "type": "media",
+            "multiple": true,
+            "required": true,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "description": {
+            "type": "richtext",
+            "required": true
+        },
+        "category": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::category.category",
+            "inversedBy": "videos"
+        },
+        "likedBy": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "plugin::users-permissions.user",
+            "mappedBy": "likedvideos"
+        },
+        "dislikedBy": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "plugin::users-permissions.user",
+            "mappedBy": "disliked_videos"
+        },
+        "viewedBy": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "plugin::users-permissions.user",
+            "inversedBy": "viewed_videos"
+        },
+        "comments": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::comment.comment",
+            "mappedBy": "video"
+        },
+        "featured_video": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::featured-video.featured-video",
+            "inversedBy": "videos"
+        },
+        "duration": {
+            "type": "string",
+            "required": true
+        },
+        "reports": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::report.report",
+            "mappedBy": "video"
+        }
+    }
+}

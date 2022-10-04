@@ -1,0 +1,121 @@
+{
+    "kind": "collectionType",
+    "collectionName": "up_users",
+    "info": {
+        "name": "user",
+        "description": "",
+        "singularName": "user",
+        "pluralName": "users",
+        "displayName": "User"
+    },
+    "options": {
+        "draftAndPublish": false,
+        "timestamps": true
+    },
+    "attributes": {
+        "username": {
+            "type": "string",
+            "minLength": 3,
+            "unique": true,
+            "configurable": false,
+            "required": true
+        },
+        "email": {
+            "type": "email",
+            "minLength": 6,
+            "configurable": false,
+            "required": true
+        },
+        "provider": {
+            "type": "string",
+            "configurable": false
+        },
+        "password": {
+            "type": "password",
+            "minLength": 6,
+            "configurable": false,
+            "private": true
+        },
+        "resetPasswordToken": {
+            "type": "string",
+            "configurable": false,
+            "private": true
+        },
+        "confirmationToken": {
+            "type": "string",
+            "configurable": false,
+            "private": true
+        },
+        "confirmed": {
+            "type": "boolean",
+            "default": false,
+            "configurable": false
+        },
+        "blocked": {
+            "type": "boolean",
+            "default": false,
+            "configurable": false
+        },
+        "role": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "plugin::users-permissions.role",
+            "inversedBy": "users",
+            "configurable": false
+        },
+        "likedvideos": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::video.video",
+            "inversedBy": "likedBy"
+        },
+        "disliked_videos": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::video.video",
+            "inversedBy": "dislikedBy"
+        },
+        "viewed_videos": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::video.video",
+            "mappedBy": "viewedBy"
+        },
+        "comments": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::comment.comment",
+            "mappedBy": "user"
+        },
+        "LIkedFeaturedEvents": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::featured-event.featured-event",
+            "mappedBy": "liked_bies"
+        },
+        "dislikedFeaturedEvents": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::featured-event.featured-event",
+            "mappedBy": "dislikedBy"
+        },
+        "viewedFeaturedEvents": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::featured-event.featured-event",
+            "mappedBy": "viewd_bies"
+        },
+        "user_information": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::user-information.user-information",
+            "inversedBy": "users_permissions_user"
+        },
+        "reports": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::report.report",
+            "mappedBy": "User"
+        }
+    }
+}

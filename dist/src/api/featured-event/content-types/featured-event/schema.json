@@ -1,0 +1,74 @@
+{
+    "kind": "collectionType",
+    "collectionName": "featured_events",
+    "info": {
+        "singularName": "featured-event",
+        "pluralName": "featured-events",
+        "displayName": "featuredEvent",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "title": {
+            "type": "string",
+            "required": true
+        },
+        "description": {
+            "type": "richtext",
+            "required": true
+        },
+        "embedId": {
+            "type": "string",
+            "required": true,
+            "unique": true
+        },
+        "category": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::category.category",
+            "inversedBy": "featured_events"
+        },
+        "liked_bies": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "plugin::users-permissions.user",
+            "inversedBy": "LIkedFeaturedEvents"
+        },
+        "dislikedBy": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "plugin::users-permissions.user",
+            "inversedBy": "dislikedFeaturedEvents"
+        },
+        "viewd_bies": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "plugin::users-permissions.user",
+            "inversedBy": "viewedFeaturedEvents"
+        },
+        "comments": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::comment.comment",
+            "mappedBy": "featured_event"
+        },
+        "thumbnail": {
+            "type": "media",
+            "multiple": false,
+            "required": true,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "duration": {
+            "type": "string",
+            "required": true
+        }
+    }
+}
